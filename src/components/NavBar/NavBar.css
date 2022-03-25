@@ -1,0 +1,67 @@
+.navbar {
+  padding: 0 3rem;
+  align-items: center;
+  justify-content: space-between;
+  height: 7rem;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  overflow: hidden;
+  border-bottom: 0.2rem solid #eee;
+  border-radius: 1rem 1rem 0 0;
+  background-color: var(--background-color);
+}
+.nav-heading {
+  align-items: center;
+}
+.nav-logo {
+  height: 5rem;
+}
+.nav-heading-small {
+  font-size: 2rem;
+  color: var(--white);
+}
+
+.saved-item-container {
+  gap: 1.4rem;
+  align-items: center;
+}
+.btn-login {
+  margin-right: 4rem;
+  background-color: var(--primary-light);
+}
+.saved-item {
+  height: 3.5rem;
+  align-items: flex-end;
+  position: relative;
+}
+.no-badge {
+  position: absolute;
+  top: 0.4rem;
+  left: 1.5rem;
+  height: 1.8rem;
+  font-size: 1.3rem;
+  text-align: center;
+  color: var(--white);
+  width: 1.8rem;
+  border-radius: 50%;
+  background-color: var(--primary);
+}
+.nav-icon {
+  color: var(--white);
+  margin-right: 1.2rem;
+}
+
+@media screen and (max-width: 550px) {
+  .nav-logo {
+    height: 3rem;
+  }
+  .nav-heading-small {
+    font-size: 1rem;
+    margin-right: 1rem;
+  }
+  .btn-login {
+    margin-right: 1.5rem;
+    width: 8rem;
+  }
+}
