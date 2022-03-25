@@ -14,12 +14,12 @@ export const NavBar=()=>{
           </div>
          
         <div className="saved-item-container flex-row">
-        <button class="btn btn-primary btn-login">Login</button>
+        <button className="btn btn-primary btn-login">Login</button>
           <div className="saved-item flex-row">
           <i className="fab fa-github icon-md nav-icon"></i>
           </div>
           <div className="saved-item flex-row">
-          <i class="fab fa-twitter icon-md nav-icon"></i>
+          <i className="fab fa-twitter icon-md nav-icon"></i>
           </div>
           
         </div>
