@@ -1,6 +1,11 @@
 import "./LandingPage.css"
 import { NavBar } from "../../components";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/auth-context";
+
 export const LandingPage=()=>{
+  const navigate= useNavigate();
+  const {token}= useAuth();
     return(
         <>
         <div className="landing-card">
@@ -14,7 +19,9 @@ export const LandingPage=()=>{
             one8-Note provides the best way to organize your tasks , lists & reminders.
           </p>
           <div className="flex-row main-buttons">
-            <button className="btn btn-primary start-btn">Get Started</button>
+            <button className="btn btn-primary start-btn"
+            onClick={()=>!token?navigate("/login"):""}
+            >Get Started</button>
          </div>
         </section>
         <section className="right-main flex-row">
