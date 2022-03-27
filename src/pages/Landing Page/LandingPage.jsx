@@ -9,7 +9,7 @@ export const LandingPage=()=>{
     return(
         <>
         <div className="landing-card">
-          <NavBar/>
+          <NavBar />
           <main className="main flex-row">
         <section className="left-main">
           <p className="head">
@@ -20,7 +20,7 @@ export const LandingPage=()=>{
           </p>
           <div className="flex-row main-buttons">
             <button className="btn btn-primary start-btn"
-            onClick={()=>!token?navigate("/login"):""}
+            onClick={()=>!token?navigate("/login"):navigate("/notes")}
             >Get Started</button>
          </div>
         </section>

@@ -3,10 +3,12 @@
 :root {
   --grey-medium: #adb5bd;
   --white: white;
+  --white-light: rgb(231, 220, 220);
   --card-shadow: #adb5bd;
   --red: #cf000f;
   --black: black;
   --orange: #f48c06;
   --background-color: rgb(10, 25, 41);
   --primary-light: #0b77e4;
+  --nav-box-shadow: #eee;
 }
