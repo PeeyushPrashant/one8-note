@@ -1,0 +1,29 @@
+.note-card {
+  width: 17vw;
+  gap: 1rem;
+  padding: 1rem;
+  box-shadow: 0 0 0.4rem var(--nav-box-shadow);
+}
+.note-card-title {
+  margin: 0;
+}
+.note-body {
+  gap: 0.5rem;
+}
+.note-card-footer {
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.note-card-btn {
+  width: 8rem;
+  height: 3rem;
+}
+.edit-btn {
+  background-color: var(--white);
+  color: var(--orange);
+}
+.del-btn {
+  background-color: var(--orange);
+  color: var(--white);
+}
