@@ -1,17 +1,3 @@
-.notes-page {
-  background-color: var(--background-color);
-}
-.main-cont {
-  height: 100vh;
-  padding-top: 2rem;
-  background-color: var(--background-color);
-}
-.sub-container {
-  width: 100%;
-  height: 100%;
-  gap: 3rem;
-  padding-left: 10rem;
-}
 .input-card-container {
   align-items: center;
   justify-content: center;
