@@ -12,18 +12,12 @@
 }
 .note-card-footer {
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
+  justify-content: flex-start;
+  gap: 2rem;
+  padding: 1rem 0 0.5rem 1rem;
 }
-.note-card-btn {
-  width: 8rem;
-  height: 3rem;
-}
-.edit-btn {
-  background-color: var(--white);
+
+.note-card-icon {
+  cursor: pointer;
   color: var(--orange);
-}
-.del-btn {
-  background-color: var(--orange);
-  color: var(--white);
 }

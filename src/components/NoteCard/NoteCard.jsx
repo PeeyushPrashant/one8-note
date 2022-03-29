@@ -1,6 +1,6 @@
 import "./NoteCard.css"
 
-export const NoteCard=({title,body,CreatedAt, editHandler,deleteHandler,backgroundColor})=>{
+export const NoteCard=({title,body,CreatedAt, editHandler,deleteHandler,backgroundColor,archiveHandler})=>{
 return (
     <div className="card note-card" style={{backgroundColor: backgroundColor}}>
       <header>
@@ -11,12 +11,10 @@ return (
           <p>Created At: {CreatedAt}</p>
       </section>
       <footer className="note-card-footer flex-row">
-           <button className="btn note-card-btn edit-btn"
-           onClick={editHandler}
-           >Edit</button>
-           <button className="btn note-card-btn del-btn"
-           onClick={deleteHandler}
-           >Delete</button>
+          <div className="note-card-icon" onClick={deleteHandler}><i class="far fa-trash-alt icon-sm"></i></div>
+          <div className="note-card-icon" onClick={editHandler}><i class="fas fa-edit icon-sm"></i></div>
+          <div className="note-card-icon" onClick={archiveHandler}><i class="bi bi-arrow-down-square-fill icon-sm"></i></div>
+           
       </footer>
     </div>
 );

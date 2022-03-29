@@ -81,6 +81,8 @@ const deleteHandler=async (id)=>{
   }
 }
 
+
+
 return (
     <div className="notes-page">
     <NavBar/>
@@ -123,6 +125,7 @@ return (
                       CreatedAt={CreatedAt}
                       editHandler={()=>editHandler(_id)}
                       deleteHandler={()=>deleteHandler(_id)}
+                      
                       backgroundColor={backGround}
                       />
                   )
