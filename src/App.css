@@ -11,4 +11,19 @@
   --background-color: rgb(10, 25, 41);
   --primary-light: #0b77e4;
   --nav-box-shadow: #eee;
+  --sidebar-active: #262f44;
+}
+.notes-page {
+  background-color: var(--background-color);
+}
+.main-cont {
+  height: 100vh;
+  padding-top: 2rem;
+  background-color: var(--background-color);
+}
+.sub-container {
+  width: 100%;
+  height: 100%;
+  gap: 3rem;
+  padding-left: 10rem;
 }

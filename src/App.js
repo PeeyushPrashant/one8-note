@@ -1,6 +1,6 @@
 import "./App.css";
 import logo from "./logo.png";
-import { LandingPage, Login, SignUp, LogOut, Notes } from "./pages";
+import { LandingPage, Login, SignUp, LogOut, Notes, Archive } from "./pages";
 import { Routes, Route, Link } from "react-router-dom";
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/logout" element={<LogOut />} />
         <Route path="/notes" element={<Notes />} />
+        <Route path="/archives" element={<Archive />} />
       </Routes>
     </div>
   );

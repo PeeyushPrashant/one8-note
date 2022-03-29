@@ -3,7 +3,7 @@ import { NavBar, Aside } from "../../components"
 import { useState } from "react";
 import { useData } from "../../context/data-context";
 import { useAuth } from "../../context/auth-context";
-import { postNote,editNote,deleteNote } from "../../services/Services";
+import { postNote,editNote,deleteNote,archiveNote } from "../../services/Services";
 import { NoteCard } from "../../components";
 
 export const Notes=()=>{
@@ -12,19 +12,8 @@ const [noteCard,setNoteCard] = useState(false);
 const expandCard=()=>{
     setNoteCard(true);
 }
-const date = new Date();
-const initialVal= {
-    _id:"",
-    title:"",
-    body:"",
-    backGround:"#e7dcdc",
-    CreatedAt:`${String(date.getDate()).padStart(2,'0')}/${
-        String(date.getMonth() + 1).padStart(2,'0')
-      }/${date.getFullYear()}`,
-}
 
-const [note,setNote]= useState(initialVal);
-const {noteState,noteDispatch}= useData();
+const {noteState,noteDispatch,archiveDispatch,note,setNote,initialVal}= useData();
 
 const notesArray= noteState.noteData;
 
@@ -67,20 +56,6 @@ const editHandler=(id)=>{
     setNote(item);
 }
 
-const deleteHandler=async (id)=>{
-  try{
-      const response= await deleteNote(id,{token});
-      if(response.status===200 || response.status===201)
-        {
-        noteDispatch({type:"ADD_NOTE",payload:response.data.notes})
-         
-        }
-  }
-  catch(error){
-      console.log(error);
-  }
-}
-
 
 
 return (
@@ -116,17 +91,17 @@ return (
             </section>
 
             <section className="note-card-container flex-row">
-              {notesArray.map(({title,body,CreatedAt,_id,backGround})=>{
+              {notesArray.map(({title,body,CreatedAt,backGround,_id})=>{
                   return (
                       <NoteCard
                       key={_id}
+                      id={_id}
                       title={title}
                       body={body}
                       CreatedAt={CreatedAt}
-                      editHandler={()=>editHandler(_id)}
-                      deleteHandler={()=>deleteHandler(_id)}
-                      
                       backgroundColor={backGround}
+                      editHandler={()=>editHandler(_id)}
+                    
                       />
                   )
               })}

@@ -34,3 +34,32 @@ export const deleteNote = async (id, { token }) =>
       authorization: token,
     },
   });
+
+export const archiveNote = async (id, { token, note }) =>
+  await axios.post(
+    `/api/notes/archives/${id}`,
+    { note },
+    {
+      headers: {
+        authorization: token,
+      },
+    }
+  );
+
+export const restoreNote = async (id, { token }) =>
+  await axios.post(
+    `/api/archives/restore/${id}`,
+    {},
+    {
+      headers: {
+        authorization: token,
+      },
+    }
+  );
+
+export const deleteArchive = async (id, { token }) =>
+  await axios.delete(`/api/archives/delete/${id}`, {
+    headers: {
+      authorization: token,
+    },
+  });
