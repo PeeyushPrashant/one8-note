@@ -45,6 +45,21 @@
   align-items: center;
   justify-content: space-between;
 }
+.footer-left {
+  align-items: center;
+  gap: 1.7rem;
+}
+.label-input {
+  background-color: var(--background-color);
+  color: var(--white-light);
+  padding: 0.5rem 0 0.5rem 0.5rem;
+  border: none;
+  font-size: 1.3rem;
+  box-shadow: 0 0 0.2rem var(--nav-box-shadow);
+}
+.label-input:focus {
+  outline: none;
+}
 .add-note-btn {
   background-color: var(--background-color);
   color: var(--white-light);
@@ -54,4 +69,5 @@
 .note-card-container {
   padding-top: 3rem;
   gap: 2.5rem;
+  flex-wrap: wrap;
 }

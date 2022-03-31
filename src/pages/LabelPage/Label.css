@@ -1,0 +1,9 @@
+.tag-heading {
+  margin: 0;
+  color: var(--white-light);
+}
+.tag-item-cont {
+  width: 100%;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
