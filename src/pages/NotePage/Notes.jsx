@@ -23,8 +23,8 @@ const addNoteHandler=async()=>{
    try{
        if(!note._id)
        {
-        const response= await postNote({token,note});
-        
+        let newNote={...note, tags:[note.tag]};
+        const response= await postNote({token:token,note:newNote});
         if(response.status===200 || response.status===201)
         {
             setNote(initialVal);
@@ -80,9 +80,15 @@ return (
                        ></textarea>
                    </section>
                    {noteCard && <footer className="note-footer flex-row">
-                       <div><input type="color" value={note.backGround}
+                       <div className="footer-left flex-row"><input type="color" value={note.backGround}
                        onChange={(e)=>setNote({...note,backGround:e.target.value})}
-                       /></div>
+                       />
+                       <input type="text" placeholder="Label" className="label-input"
+                       value={note.tag}
+                       onChange={(e)=>setNote({...note,tag:e.target.value})}
+                       />
+                       </div>
+
                         <button className="add-note-btn btn"
                         onClick={addNoteHandler}
                         >{!note._id?"Add":"Update"}</button>
@@ -91,7 +97,7 @@ return (
             </section>
 
             <section className="note-card-container flex-row">
-              {notesArray.map(({title,body,CreatedAt,backGround,_id})=>{
+              {notesArray.map(({title,body,CreatedAt,backGround,_id,tag})=>{
                   return (
                       <NoteCard
                       key={_id}
@@ -99,6 +105,7 @@ return (
                       title={title}
                       body={body}
                       CreatedAt={CreatedAt}
+                      tag={tag}
                       backgroundColor={backGround}
                       editHandler={()=>editHandler(_id)}
                     

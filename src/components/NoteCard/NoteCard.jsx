@@ -4,7 +4,7 @@ import { useData } from "../../context/data-context";
 import { useAuth } from "../../context/auth-context";
 import { useEffect, useState } from "react";
 
-export const NoteCard=({title,body,editHandler,CreatedAt,backgroundColor,id})=>{
+export const NoteCard=({title,body,editHandler,CreatedAt,backgroundColor,id,tag})=>{
     
     
     const {note,noteState,noteDispatch,archiveState,archiveDispatch}=useData();
@@ -75,6 +75,7 @@ return (
           <p>{body}</p>
           <p>Created At: {CreatedAt}</p>
       </section>
+      {tag && <section><p className="tag">{tag}</p></section>}
       <footer className="note-card-footer flex-row">
           <div className="note-card-icon" onClick={()=>deleteHandler(id)}><i class="far fa-trash-alt icon-sm"></i></div>
           <div className="note-card-icon" onClick={editHandler}><i class="fas fa-edit icon-sm"></i></div>

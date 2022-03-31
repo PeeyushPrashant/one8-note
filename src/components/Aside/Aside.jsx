@@ -14,7 +14,7 @@ export const Aside=()=>{
             <p className="aside-subhead">Home</p>
         </div>
         <div className="aside-tab flex-row"
-        
+        onClick={()=>navigate("/labels")}
         >
         <i className="bi bi-tag-fill icon-md"></i>
             <p className="aside-subhead">Labels</p>
