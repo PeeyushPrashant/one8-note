@@ -1,10 +1,12 @@
 import  "./NavBar.css";
 import { useAuth } from "../../context/auth-context";
 import { useNavigate } from "react-router-dom";
+import { useData } from "../../context/data-context";
 
 export const NavBar=()=>{
   const {token,logOutHandler}= useAuth();
   const navigate= useNavigate();
+  const {filterDispatch}= useData();
     return(
         <nav className="navbar flex-row">
           
@@ -16,7 +18,16 @@ export const NavBar=()=>{
             />
             <small className="nav-heading-small">Note</small>
           </div>
-         
+          <div className="nav-search flex-row">
+          <i className="fas fa-search search-icon"></i>
+          <input type="text" className="nav-input" placeholder="Type to search"
+          onKeyDown={(e)=>{
+            if(e.key === 'Enter' || e.target.value === ''){
+              filterDispatch({type:"SEARCH_FILTER", payload:["search",e.target.value]})
+            }
+          }}
+          />
+        </div>
         <div className="saved-item-container flex-row">
         {!token?<button className="btn btn-primary btn-login"
         onClick={()=>navigate("/login")}
