@@ -20,6 +20,19 @@ const archiveReducer = (state, action) => {
   }
 };
 
+const filterReducer = (state, action) => {
+  switch (action.type) {
+    case "SEARCH_FILTER":
+      const newFilter = {
+        ...state.filter,
+        [action.payload[0]]: action.payload[1],
+      };
+      return { ...state, filter: newFilter };
+    default:
+      return state;
+  }
+};
+
 const DataProvider = ({ children }) => {
   const date = new Date();
   const initialVal = {
@@ -32,11 +45,18 @@ const DataProvider = ({ children }) => {
     ).padStart(2, "0")}/${date.getFullYear()}`,
     tag: "",
   };
+  const initialFilter = {
+    search: "",
+  };
   const [noteState, noteDispatch] = useReducer(noteReducer, { noteData: [] });
   const [archiveState, archiveDispatch] = useReducer(archiveReducer, {
     archiveData: [],
   });
   const [note, setNote] = useState(initialVal);
+  const [filterState, filterDispatch] = useReducer(filterReducer, {
+    filter: initialFilter,
+  });
+  // console.log(filterState.filter);
   return (
     <DataContext.Provider
       value={{
@@ -44,6 +64,8 @@ const DataProvider = ({ children }) => {
         noteDispatch,
         archiveState,
         archiveDispatch,
+        filterState,
+        filterDispatch,
         note,
         setNote,
         initialVal,

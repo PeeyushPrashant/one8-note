@@ -8,7 +8,7 @@ const navigate=useNavigate();
         <div className="auth-container flex-row">
           <div className="auth-card flex-col logout-card">
             <h1 className="auth-heading logout">You are currently logged out</h1>
-            <p>Don't miss out on latest deals. Login again!</p>
+            <p>Create free notes & collaborate with your team.</p>
             <button className="btn btn-primary "
               onClick={()=>navigate("/")}
               >Home</button>

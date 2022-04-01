@@ -13,7 +13,7 @@ const expandCard=()=>{
     setNoteCard(true);
 }
 
-const {noteState,noteDispatch,archiveDispatch,note,setNote,initialVal}= useData();
+const {noteState,noteDispatch,archiveDispatch,note,setNote,initialVal,filterState}= useData();
 
 const notesArray= noteState.noteData;
 
@@ -55,8 +55,16 @@ const editHandler=(id)=>{
     setNoteCard(true);
     setNote(item);
 }
-
-
+const searchFilter=(notes,filter)=>{
+    let newArray=[];
+    let flag=false;
+    if(filter!==""){
+        newArray= notes.filter((item)=>item.tag===filter)
+        
+    }
+    return (newArray.length>0? newArray:notes);
+}
+const filteredNotes= searchFilter(notesArray,filterState.filter.search);
 
 return (
     <div className="notes-page">
@@ -97,7 +105,7 @@ return (
             </section>
 
             <section className="note-card-container flex-row">
-              {notesArray.map(({title,body,CreatedAt,backGround,_id,tag})=>{
+              {filteredNotes.map(({title,body,CreatedAt,backGround,_id,tag})=>{
                   return (
                       <NoteCard
                       key={_id}
