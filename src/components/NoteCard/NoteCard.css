@@ -31,3 +31,24 @@
   cursor: pointer;
   color: var(--orange);
 }
+
+@media screen and (max-width: 1150px) {
+  .note-card {
+    width: 20vw;
+  }
+}
+@media screen and (max-width: 920px) {
+  .note-card {
+    width: 30vw;
+  }
+}
+@media screen and (max-width: 650px) {
+  .note-card {
+    width: 40vw;
+  }
+}
+@media screen and (max-width: 500px) {
+  .note-card {
+    width: 60vw;
+  }
+}

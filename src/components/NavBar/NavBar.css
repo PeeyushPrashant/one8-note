@@ -33,7 +33,7 @@
 }
 .nav-input {
   height: 3.2rem;
-  width: 30rem;
+  width: 18vw;
   padding-left: 4.5rem;
   border: 0.2rem solid var(--grey-light);
   border-radius: 0.5rem;
@@ -52,6 +52,7 @@
   align-items: flex-end;
   position: relative;
 }
+
 .no-badge {
   position: absolute;
   top: 0.4rem;
@@ -67,9 +68,20 @@
 .nav-icon {
   color: var(--white);
   margin-right: 1.2rem;
+  font-size: 2.5rem;
+}
+.nav-icon:hover {
+  cursor: pointer;
+  color: var(--primary-light);
+}
+.hamburger {
+  display: none;
 }
 
 @media screen and (max-width: 550px) {
+  .navbar {
+    padding: 0 1.8rem;
+  }
   .nav-logo {
     height: 3rem;
   }
@@ -77,8 +89,20 @@
     font-size: 1rem;
     margin-right: 1rem;
   }
-  .btn-login {
-    margin-right: 1.5rem;
-    width: 8rem;
+  .nav-input {
+    width: 16vw;
+    padding-left: 3.6rem;
+    font-size: 0.8rem;
+  }
+  .nav-icon {
+    color: var(--white);
+    margin-right: 0.3rem;
+    font-size: 1.5rem;
+  }
+  .saved-item {
+    align-items: center;
+  }
+  .hamburger {
+    display: block;
   }
 }

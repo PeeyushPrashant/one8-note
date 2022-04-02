@@ -56,7 +56,11 @@ const DataProvider = ({ children }) => {
   const [filterState, filterDispatch] = useReducer(filterReducer, {
     filter: initialFilter,
   });
-  // console.log(filterState.filter);
+  const [sideBar, setSideBar] = useState(false);
+
+  const sideBarHandler = () => {
+    setSideBar((curr) => !curr);
+  };
   return (
     <DataContext.Provider
       value={{
@@ -69,6 +73,9 @@ const DataProvider = ({ children }) => {
         note,
         setNote,
         initialVal,
+        sideBar,
+        setSideBar,
+        sideBarHandler,
       }}
     >
       {children}

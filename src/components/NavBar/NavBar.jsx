@@ -6,7 +6,7 @@ import { useData } from "../../context/data-context";
 export const NavBar=()=>{
   const {token,logOutHandler}= useAuth();
   const navigate= useNavigate();
-  const {filterDispatch}= useData();
+  const {filterDispatch,sideBarHandler}= useData();
     return(
         <nav className="navbar flex-row">
           
@@ -29,19 +29,31 @@ export const NavBar=()=>{
           />
         </div>
         <div className="saved-item-container flex-row">
-        {!token?<button className="btn btn-primary btn-login"
-        onClick={()=>navigate("/login")}
-        >Login</button>:
-        <button className="btn btn-primary btn-login"
+        {!token?
+        <div className="saved-item flex-row"
+        onClick={()=>navigate("/login")}>
+        <i class="fas fa-sign-in-alt  nav-icon"></i>
+        </div>:
+        <div className="saved-item flex-row"
         onClick={logOutHandler}
-        >Logout</button>}
+        >
+          <i class="fas fa-sign-out-alt  nav-icon"></i>
+          </div>}
           <div className="saved-item flex-row">
-          <i className="fab fa-github icon-md nav-icon"></i>
+            <a href="https://github.com/PeeyushPrashant" target="_blank">
+          <i className="fab fa-github  nav-icon"></i>
+          </a>
           </div>
           <div className="saved-item flex-row">
-          <i className="fab fa-twitter icon-md nav-icon"></i>
+            <a href="https://twitter.com/PrashantPeeyush" target="_blank">
+          <i className="fab fa-twitter  nav-icon"></i>
+          </a>
           </div>
-          
+          <div className="saved-item flex-row"
+          onClick={sideBarHandler}
+          >
+          <i class="fas fa-bars nav-icon hamburger"></i>
+          </div>
         </div>
       </nav>
     );
