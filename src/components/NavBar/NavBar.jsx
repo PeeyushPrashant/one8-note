@@ -77,7 +77,7 @@ export const NavBar=()=>{
             }
           }}
           />
-           <div className="filter-icon"><i className="fas fa-filter icon-sm"></i></div>
+           <div className="filter-icon" onClick={sortFilterHandler}><i className="fas fa-filter icon-sm"></i></div>
         </div>
         </section>
         {sortFilter && <Filter closeFilter={sortFilterHandler}/>}
