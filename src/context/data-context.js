@@ -22,12 +22,18 @@ const archiveReducer = (state, action) => {
 
 const filterReducer = (state, action) => {
   switch (action.type) {
-    case "SEARCH_FILTER":
+    case "FILTER":
       const newFilter = {
         ...state.filter,
         [action.payload[0]]: action.payload[1],
       };
       return { ...state, filter: newFilter };
+    case "CLEAR":
+      const removeSort = {
+        ...state.filter,
+        sort: "",
+      };
+      return { ...state, filter: removeSort };
     default:
       return state;
   }
@@ -44,9 +50,12 @@ const DataProvider = ({ children }) => {
       date.getMonth() + 1
     ).padStart(2, "0")}/${date.getFullYear()}`,
     tag: "",
+    actualTime: `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`,
+    timestamp: date.getTime(),
   };
   const initialFilter = {
     search: "",
+    sort: "",
   };
   const [noteState, noteDispatch] = useReducer(noteReducer, { noteData: [] });
   const [archiveState, archiveDispatch] = useReducer(archiveReducer, {
@@ -61,6 +70,7 @@ const DataProvider = ({ children }) => {
   const sideBarHandler = () => {
     setSideBar((curr) => !curr);
   };
+  // console.log(note);
   return (
     <DataContext.Provider
       value={{

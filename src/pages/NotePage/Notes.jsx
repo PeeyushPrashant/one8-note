@@ -24,6 +24,7 @@ const addNoteHandler=async()=>{
        if(!note._id)
        {
         let newNote={...note, tags:[note.tag]};
+        console.log(newNote);
         const response= await postNote({token:token,note:newNote});
         if(response.status===200 || response.status===201)
         {
@@ -64,7 +65,19 @@ const searchFilter=(notes,filter)=>{
     }
     return (newArray.length>0? newArray:notes);
 }
-const filteredNotes= searchFilter(notesArray,filterState.filter.search);
+const sortNotes =(notes, sortBy)=>{
+    if(sortBy==="latest")
+     return [...notes].sort((a, b) => b.timestamp - a.timestamp);
+    else
+    return [...notes].sort((a, b) => a.timestamp - b.timestamp);
+}
+const filterNotes=()=>{
+    let data=searchFilter(notesArray,filterState.filter.search);
+    if(filterState.filter.sort)
+     data= sortNotes(data,filterState.filter.sort); 
+    return data;
+}
+const filteredNotes= filterNotes();
 
 return (
     <div className="notes-page">
@@ -72,6 +85,7 @@ return (
     <main className="main-cont flex-row">
         <Aside/>
         <div className="sub-container flex-col">
+            
             <section className="input-card-container flex-row">
                <div className="card note-input-card">
                    {noteCard && <header className="note-header flex-row">
@@ -105,7 +119,7 @@ return (
             </section>
 
             <section className="note-card-container ">
-              {filteredNotes.map(({title,body,CreatedAt,backGround,_id,tag})=>{
+              {filteredNotes.map(({title,body,CreatedAt,backGround,_id,tag,actualTime})=>{
                   return (
                       <NoteCard
                       key={_id}
@@ -114,6 +128,7 @@ return (
                       body={body}
                       CreatedAt={CreatedAt}
                       tag={tag}
+                      actualTime={actualTime}
                       backgroundColor={backGround}
                       editHandler={()=>editHandler(_id)}
                     

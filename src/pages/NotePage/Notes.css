@@ -74,6 +74,11 @@
   flex-wrap: wrap;
 }
 
+@media screen and (max-width: 750px) {
+  .note-input-card {
+    width: 60vw;
+  }
+}
 @media screen and (max-width: 650px) {
   .note-card-container {
     display: flex;

@@ -20,7 +20,7 @@
   font-size: 1.6rem;
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 750px) {
   .showSide {
     position: absolute;
     z-index: 10;
