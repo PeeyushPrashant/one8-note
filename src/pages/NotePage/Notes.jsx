@@ -104,7 +104,7 @@ return (
                </div>
             </section>
 
-            <section className="note-card-container flex-row">
+            <section className="note-card-container ">
               {filteredNotes.map(({title,body,CreatedAt,backGround,_id,tag})=>{
                   return (
                       <NoteCard
