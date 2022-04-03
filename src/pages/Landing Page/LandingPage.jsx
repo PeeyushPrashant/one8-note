@@ -2,10 +2,11 @@ import "./LandingPage.css"
 import { NavBar } from "../../components";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth-context";
-
+import { useTheme } from "../../context/theme-context";
 export const LandingPage=()=>{
   const navigate= useNavigate();
   const {token}= useAuth();
+  const {theme}= useTheme();
     return(
         <>
         <div className="landing-card">
@@ -26,7 +27,7 @@ export const LandingPage=()=>{
         </section>
         <section className="right-main flex-row">
           <img
-            src="https://res.cloudinary.com/doohtm4bs/image/upload/v1648197484/Notes%20app/Other_13_hv8wky.png"
+            src="https://res.cloudinary.com/doohtm4bs/image/upload/v1649010122/Notes%20app/Other_13_hv8wky_ccexpress_fkcbd9.png"
             alt="coding-image"
             className="landing-image"
           />

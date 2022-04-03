@@ -9,11 +9,13 @@ import {
   Archive,
   Label,
 } from "./pages";
+import { useTheme } from "./context/theme-context";
 import { Routes, Route, Link } from "react-router-dom";
 
 function App() {
+  const { theme } = useTheme();
   return (
-    <div className="App">
+    <div className="App" data-theme={theme}>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />

@@ -13,6 +13,13 @@
   --nav-box-shadow: #eee;
   --sidebar-active: #262f44;
 }
+
+[data-theme="light"] {
+  --background-color: white;
+  --nav-box-shadow: rgb(48, 39, 39);
+  --white-light: rgb(48, 44, 44);
+  --white: black;
+}
 .notes-page {
   background-color: var(--background-color);
   height: 100vh;

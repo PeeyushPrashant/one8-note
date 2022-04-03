@@ -4,14 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { useData } from "../../context/data-context";
 import { Filter } from "../Filter/Filter";
 import { useState } from "react";
-
+import { useTheme } from "../../context/theme-context";
 
 export const NavBar=()=>{
   const [sortFilter, setSortFilter]= useState(false);
   const {token,logOutHandler}= useAuth();
   const navigate= useNavigate();
   const {filterDispatch,sideBarHandler}= useData();
-
+  const {theme,changeTheme}= useTheme();
   const sortFilterHandler=()=>{
     setSortFilter((curr)=>!curr);
   
@@ -59,6 +59,11 @@ export const NavBar=()=>{
             <a href="https://twitter.com/PrashantPeeyush" target="_blank">
           <i className="fab fa-twitter  nav-icon"></i>
           </a>
+          </div>
+          <div className="saved-item flex-row"
+          onClick={changeTheme}
+          >
+            {theme==="dark"?<i className="bi bi-brightness-high nav-icon"></i>:<i className="bi bi-moon-fill nav-icon"></i>}
           </div>
           <div className="saved-item flex-row"
           onClick={sideBarHandler}
