@@ -70,7 +70,7 @@ const DataProvider = ({ children }) => {
   const sideBarHandler = () => {
     setSideBar((curr) => !curr);
   };
-  // console.log(note);
+
   return (
     <DataContext.Provider
       value={{

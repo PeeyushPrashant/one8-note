@@ -27,5 +27,32 @@
 .sortBy {
   gap: 3rem;
   align-items: center;
-  padding-right: 7rem;
+  width: 100%;
+}
+.clear {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1200px) {
+  .sort-modal {
+    top: 10%;
+    left: 30%;
+  }
+}
+@media screen and (max-width: 750px) {
+  .sort-modal {
+    left: 25%;
+    top: 13%;
+  }
+}
+@media screen and (max-width: 550px) {
+  .modal-header {
+    gap: 6rem;
+  }
+  .sortBy {
+    gap: 1.5rem;
+  }
+  .sort-modal {
+    padding: 1rem;
+  }
 }

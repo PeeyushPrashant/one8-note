@@ -14,7 +14,7 @@ export const NavBar=()=>{
 
   const sortFilterHandler=()=>{
     setSortFilter((curr)=>!curr);
-    filterDispatch({type:"CLEAR"})
+  
   }
     return(
       <>

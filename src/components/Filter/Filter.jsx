@@ -23,6 +23,7 @@ return (
                 checked={filterState.filter.sort==="oldest"?true:false}
                 onChange={()=>filterDispatch({type:"FILTER", payload:["sort","oldest"]})}/>
                 <p className="modal-text">Oldest Note</p>
+                <p className="modal-text clear" onClick={()=>filterDispatch({type:"CLEAR"})}>Clear</p>
             </div>
         </section>
     </div>

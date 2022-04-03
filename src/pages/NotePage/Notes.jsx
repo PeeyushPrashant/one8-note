@@ -24,7 +24,6 @@ const addNoteHandler=async()=>{
        if(!note._id)
        {
         let newNote={...note, tags:[note.tag]};
-        console.log(newNote);
         const response= await postNote({token:token,note:newNote});
         if(response.status===200 || response.status===201)
         {
@@ -119,7 +118,15 @@ return (
             </section>
 
             <section className="note-card-container ">
-              {filteredNotes.map(({title,body,CreatedAt,backGround,_id,tag,actualTime})=>{
+              {filteredNotes.map(({
+                  title,
+                  body,
+                  CreatedAt,
+                  backGround,
+                  _id,
+                  tag,
+                  actualTime})=>{
+
                   return (
                       <NoteCard
                       key={_id}
