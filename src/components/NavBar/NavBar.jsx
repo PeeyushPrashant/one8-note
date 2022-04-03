@@ -2,12 +2,22 @@ import  "./NavBar.css";
 import { useAuth } from "../../context/auth-context";
 import { useNavigate } from "react-router-dom";
 import { useData } from "../../context/data-context";
+import { Filter } from "../Filter/Filter";
+import { useState } from "react";
+
 
 export const NavBar=()=>{
+  const [sortFilter, setSortFilter]= useState(false);
   const {token,logOutHandler}= useAuth();
   const navigate= useNavigate();
   const {filterDispatch,sideBarHandler}= useData();
+
+  const sortFilterHandler=()=>{
+    setSortFilter((curr)=>!curr);
+  
+  }
     return(
+      <>
         <nav className="navbar flex-row">
           
           <div className="nav-heading flex-row">
@@ -23,10 +33,11 @@ export const NavBar=()=>{
           <input type="text" className="nav-input" placeholder="Type to search"
           onKeyDown={(e)=>{
             if(e.key === 'Enter' || e.target.value === ''){
-              filterDispatch({type:"SEARCH_FILTER", payload:["search",e.target.value]})
+              filterDispatch({type:"FILTER", payload:["search",e.target.value]})
             }
           }}
           />
+         <div className="filter-icon" onClick={sortFilterHandler}><i className="fas fa-filter icon-sm"></i></div>
         </div>
         <div className="saved-item-container flex-row">
         {!token?
@@ -56,5 +67,20 @@ export const NavBar=()=>{
           </div>
         </div>
       </nav>
+      <section className="mobile-search-cont">
+       <div className="mobile-nav-search ">
+          <i className="fas fa-search search-icon"></i>
+          <input type="text" className="nav-input" placeholder="Type to search"
+          onKeyDown={(e)=>{
+            if(e.key === 'Enter' || e.target.value === ''){
+              filterDispatch({type:"FILTER", payload:["search",e.target.value]})
+            }
+          }}
+          />
+           <div className="filter-icon" onClick={sortFilterHandler}><i className="fas fa-filter icon-sm"></i></div>
+        </div>
+        </section>
+        {sortFilter && <Filter closeFilter={sortFilterHandler}/>}
+      </>
     );
 }

@@ -4,7 +4,7 @@ import { useData } from "../../context/data-context";
 import { useAuth } from "../../context/auth-context";
 import { useEffect, useState } from "react";
 
-export const NoteCard=({title,body,editHandler,CreatedAt,backgroundColor,id,tag})=>{
+export const NoteCard=({title,body,editHandler,CreatedAt,backgroundColor,id,tag,actualTime})=>{
     
     
     const {note,noteState,noteDispatch,archiveState,archiveDispatch}=useData();
@@ -74,6 +74,7 @@ return (
       <section className="note-body flex-col">
           <p>{body}</p>
           <p>Created At: {CreatedAt}</p>
+          <p>{actualTime}</p>
       </section>
       {tag && <section><p className="tag">{tag}</p></section>}
       <footer className="note-card-footer flex-row">
