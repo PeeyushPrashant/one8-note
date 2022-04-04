@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer, useState } from "react";
-
+import { useTheme } from "./theme-context";
 const DataContext = createContext();
 
 const noteReducer = (state, action) => {
@@ -40,6 +40,7 @@ const filterReducer = (state, action) => {
 };
 
 const DataProvider = ({ children }) => {
+  const { theme } = useTheme();
   const date = new Date();
   const initialVal = {
     _id: "",
