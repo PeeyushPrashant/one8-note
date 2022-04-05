@@ -1,4 +1,5 @@
-import "./Notes.css"
+import "./Notes.css";
+import { useLocation } from "react-router-dom";
 import { NavBar, Aside } from "../../components"
 import { useState } from "react";
 import { useData } from "../../context/data-context";
@@ -8,7 +9,6 @@ import { NoteCard } from "../../components";
 
 export const Notes=()=>{
 const [noteCard,setNoteCard] = useState(false);
-
 const expandCard=()=>{
     setNoteCard(true);
 }
@@ -23,6 +23,7 @@ const addNoteHandler=async()=>{
    try{
        if(!note._id)
        {
+    
         let newNote={...note, tags:[note.tag]};
         const response= await postNote({token:token,note:newNote});
         if(response.status===200 || response.status===201)
@@ -118,26 +119,13 @@ return (
             </section>
 
             <section className="note-card-container ">
-              {filteredNotes.map(({
-                  title,
-                  body,
-                  CreatedAt,
-                  backGround,
-                  _id,
-                  tag,
-                  actualTime})=>{
+              {filteredNotes.map((note)=>{
 
                   return (
                       <NoteCard
-                      key={_id}
-                      id={_id}
-                      title={title}
-                      body={body}
-                      CreatedAt={CreatedAt}
-                      tag={tag}
-                      actualTime={actualTime}
-                      backgroundColor={backGround}
-                      editHandler={()=>editHandler(_id)}
+                      key={note._id}
+                      note={note}
+                      editHandler={()=>editHandler(note._id)}
                     
                       />
                   )

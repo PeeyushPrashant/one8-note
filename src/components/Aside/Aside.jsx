@@ -31,7 +31,7 @@ export const Aside=()=>{
             <p className="aside-subhead">Archive</p>
         </div>
         </Link>
-        <Link to="">
+        <Link to="/trash">
         <div className="aside-tab flex-row">
         <i className="far fa-trash-alt icon-md"></i>
             <p className="aside-subhead">Trash</p>
