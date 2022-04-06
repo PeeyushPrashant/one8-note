@@ -12,16 +12,11 @@ export const Archive=()=>{
           <main className="main-cont flex-row">
               <Aside/>
               <div className="sub-container flex-row">
-                 {archiveArray.map(({title,body,CreatedAt,_id,backGround,tag})=>{
+                 {archiveArray.map((note)=>{
                      return (
                          <NoteCard
-                         key={_id}
-                        id={_id}
-                      title={title}
-                      body={body}
-                      tag={tag}
-                      CreatedAt={CreatedAt}
-                      backgroundColor={backGround}
+                         key={note._id}
+                         note={note}
                          />
                      );
                  })}

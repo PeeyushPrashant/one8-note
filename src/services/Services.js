@@ -28,8 +28,8 @@ export const editNote = async ({ note, token }) =>
     }
   );
 
-export const deleteNote = async (id, { token }) =>
-  await axios.delete(`/api/notes/${id}`, {
+export const deleteTrash = async (id, { token }) =>
+  await axios.delete(`/api/trash/delete/${id}`, {
     headers: {
       authorization: token,
     },
@@ -63,3 +63,25 @@ export const deleteArchive = async (id, { token }) =>
       authorization: token,
     },
   });
+
+export const trashNote = async (id, { note, token }) =>
+  await axios.post(
+    `/api/notes/trash/${id}`,
+    { note },
+    {
+      headers: {
+        authorization: token,
+      },
+    }
+  );
+
+export const trashToNote = async (id, { token }) =>
+  await axios.post(
+    `/api/trash/restore/${id}`,
+    {},
+    {
+      headers: {
+        authorization: token,
+      },
+    }
+  );

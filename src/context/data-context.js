@@ -39,6 +39,15 @@ const filterReducer = (state, action) => {
   }
 };
 
+const trashReducer = (state, action) => {
+  switch (action.type) {
+    case "ADD_TO_TRASH":
+      return { ...state, trashData: action.payload };
+    default:
+      return state;
+  }
+};
+
 const DataProvider = ({ children }) => {
   const { theme } = useTheme();
   const date = new Date();
@@ -62,6 +71,9 @@ const DataProvider = ({ children }) => {
   const [archiveState, archiveDispatch] = useReducer(archiveReducer, {
     archiveData: [],
   });
+  const [trashState, trashDispatch] = useReducer(trashReducer, {
+    trashData: [],
+  });
   const [note, setNote] = useState(initialVal);
   const [filterState, filterDispatch] = useReducer(filterReducer, {
     filter: initialFilter,
@@ -79,6 +91,8 @@ const DataProvider = ({ children }) => {
         noteDispatch,
         archiveState,
         archiveDispatch,
+        trashState,
+        trashDispatch,
         filterState,
         filterDispatch,
         note,

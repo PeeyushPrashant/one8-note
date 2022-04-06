@@ -27,6 +27,7 @@
 .main-cont {
   padding-top: 2rem;
   background-color: var(--background-color);
+  gap: 2rem;
 }
 .sub-container {
   width: 100%;

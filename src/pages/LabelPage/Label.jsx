@@ -25,16 +25,17 @@ export const Label=()=>{
                       <>
                       <h2 className="tag-heading">{item}</h2>
                       <div className="tag-item-cont flex-row">
-                       {taggedItems.map(({title,body,CreatedAt,_id,backGround,tag})=>{
+                       {taggedItems.map((note)=>{
                            return(
                            <NoteCard
-                           key={_id}
-                        id={_id}
-                      title={title}
-                      body={body}
-                      tag={tag}
-                      CreatedAt={CreatedAt}
-                      backgroundColor={backGround}
+                           key={note._id}
+                           note={note}
+                    //     id={_id}
+                    //   title={title}
+                    //   body={body}
+                    //   tag={tag}
+                    //   CreatedAt={CreatedAt}
+                    //   backgroundColor={backGround}
 
                            />
                            );
