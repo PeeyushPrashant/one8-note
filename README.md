@@ -6,7 +6,8 @@
  
 
   ```
-   $ git clone https://github.com/anuj-kumary/Eagle-note.git
+   $ git clone https://github.com/PeeyushPrashant/one8-note.git
+   $ cd one8-note
    $ npm install
    $ npm start
 
