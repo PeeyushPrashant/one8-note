@@ -20,7 +20,9 @@ export const NavBar=()=>{
       <>
         <nav className="navbar flex-row">
           
-          <div className="nav-heading flex-row">
+          <div className="nav-heading flex-row"
+          onClick={()=>navigate("/")}
+          >
             <img
               src="https://res.cloudinary.com/doohtm4bs/image/upload/v1648196922/Notes%20app/one8_sppttb.png"
               alt="one8 logo"

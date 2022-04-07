@@ -13,6 +13,7 @@
 }
 .nav-heading {
   align-items: center;
+  cursor: pointer;
 }
 .nav-logo {
   height: 5rem;
