@@ -64,7 +64,7 @@ const DataProvider = ({ children }) => {
     _id: "",
     title: "",
     body: "",
-    backGround: "#0A1929",
+    backGround: "",
     isPinned: false,
     CreatedAt: `${String(date.getDate()).padStart(2, "0")}/${String(
       date.getMonth() + 1
