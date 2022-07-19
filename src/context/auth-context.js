@@ -14,25 +14,25 @@ const AuthProvider = ({ children }) => {
     try {
       if (e.target.innerText === "Login with test credentials") {
         setLoginForm({
-          email: "adarshbalika@gmail.com",
-          password: "adarshBalika123",
+          email: "prashantpeeyush@gmail.com",
+          password: "prashant123",
         });
         var response = await loginServices(
-          "adarshbalika@gmail.com",
-          "adarshBalika123"
+          "prashantpeeyush@gmail.com",
+          "prashant123"
         );
       } else var response = await loginServices(email, password);
-
+      console.log(response);
       if (response.status === 201 || response.status === 200) {
         localStorage.setItem(
           "auth",
           JSON.stringify({
             token: response.data.encodedToken,
-            user: response.data.createdUser,
+            user: response.data.foundUser,
           })
         );
         setToken(response.data.encodedToken);
-        setUser(response.data.createdUser);
+        setUser(response.data.foundUser);
         navigate("/");
       }
     } catch (error) {
@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
     try {
       if (name && email && password !== "")
         var response = await signUpServices(name, email, password);
-
+      console.log(response);
       if (response.status === 201) {
         localStorage.setItem(
           "auth",
@@ -62,16 +62,9 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const logOutHandler = () => {
-    localStorage.removeItem("auth");
-    setToken(undefined);
-    setUser(undefined);
-    navigate("/logout");
-  };
-
   return (
     <AuthContext.Provider
-      value={{ token, user, loginHandler, signUpHandler, logOutHandler }}
+      value={{ token, user, loginHandler, signUpHandler, setToken, setUser }}
     >
       {children}
     </AuthContext.Provider>

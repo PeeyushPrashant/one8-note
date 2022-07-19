@@ -4,10 +4,18 @@
   padding: 1rem;
   box-shadow: 0 0 0.4rem var(--nav-box-shadow);
   height: max-content;
+  background-color: var(--background-color);
   color: var(--white-light);
+}
+.note-header {
+  justify-content: space-between;
 }
 .note-card-title {
   margin: 0;
+}
+.pin-icon {
+  color: var(--white-light);
+  cursor: pointer;
 }
 .note-body {
   gap: 0.5rem;

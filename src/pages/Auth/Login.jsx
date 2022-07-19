@@ -2,13 +2,20 @@ import { useState } from "react";
 import { useAuth } from "../../context/auth-context";
 import "./Auth.css"
 import { useNavigate } from "react-router-dom";
+import { useData } from "../../context/data-context";
 
 
 export const Login=()=>{
     const [loginForm,setLoginForm]= useState({email:"",password:""});
    
-    const {loginHandler} = useAuth();
+    const {loginHandler,token} = useAuth();
+    const {setLoader}= useData();
     const navigate= useNavigate();
+
+    if(token){
+      setLoader(true);
+      setTimeout(()=>setLoader(false),1000)
+    }
 
     return (
         <main className="main">

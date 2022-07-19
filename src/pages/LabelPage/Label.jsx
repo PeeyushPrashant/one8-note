@@ -30,13 +30,6 @@ export const Label=()=>{
                            <NoteCard
                            key={note._id}
                            note={note}
-                    //     id={_id}
-                    //   title={title}
-                    //   body={body}
-                    //   tag={tag}
-                    //   CreatedAt={CreatedAt}
-                    //   backgroundColor={backGround}
-
                            />
                            );
                        })}

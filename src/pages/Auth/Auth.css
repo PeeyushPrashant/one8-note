@@ -3,7 +3,8 @@
   justify-content: center;
 }
 .auth-card {
-  background: var(--card-bg);
+  background-color: var(--background-color);
+  color: var(--white-light);
   padding: 1rem 0;
   width: 50rem;
   border-radius: 1rem;

@@ -49,7 +49,8 @@ export const Aside=()=>{
             <p className="aside-subhead">Trash</p>
         </div>
         </NavLink>
-        <NavLink to=""
+        <NavLink to="/profile"
+        style={getActiveStyle}
         >
         <div className="aside-tab flex-row">
         <i className="bi bi-person-circle icon-md"></i>

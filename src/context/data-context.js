@@ -6,6 +6,15 @@ const noteReducer = (state, action) => {
   switch (action.type) {
     case "ADD_NOTE":
       return { ...state, noteData: action.payload };
+    case "PINNED":
+      return {
+        ...state,
+        noteData: state.noteData.map((item) => {
+          return action.payload === item._id
+            ? { ...item, isPinned: !item.isPinned }
+            : item;
+        }),
+      };
     default:
       return state;
   }
@@ -55,7 +64,8 @@ const DataProvider = ({ children }) => {
     _id: "",
     title: "",
     body: "",
-    backGround: "#192129",
+    backGround: "",
+    isPinned: false,
     CreatedAt: `${String(date.getDate()).padStart(2, "0")}/${String(
       date.getMonth() + 1
     ).padStart(2, "0")}/${date.getFullYear()}`,
@@ -79,6 +89,7 @@ const DataProvider = ({ children }) => {
     filter: initialFilter,
   });
   const [sideBar, setSideBar] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   const sideBarHandler = () => {
     setSideBar((curr) => !curr);
@@ -101,6 +112,8 @@ const DataProvider = ({ children }) => {
         sideBar,
         setSideBar,
         sideBarHandler,
+        loader,
+        setLoader,
       }}
     >
       {children}

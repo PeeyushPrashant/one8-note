@@ -2,15 +2,23 @@ import "./Auth.css"
 import { useAuth } from "../../context/auth-context";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useData } from "../../context/data-context";
 
 export const SignUp=()=>{
-  const {signUpHandler}= useAuth();
+  const {signUpHandler,token}= useAuth();
+  const {setLoader} = useData();
   const [signUpForm, setSignUpForm] = useState({
     name:"",
     email:"",
     password:""
   })
   const navigate= useNavigate();
+
+  if(token){
+    setLoader(true);
+    setTimeout(()=>setLoader(false),1000)
+  }
+
   
     return (
         <main className="main">
@@ -55,18 +63,6 @@ export const SignUp=()=>{
                 value={signUpForm.password}
                 placeholder="Enter your new password"
                 onChange={(e)=>setSignUpForm({...signUpForm,password:e.target.value})}
-                required
-              />
-            </div>
-            <div className="auth-input flex-row">
-              <label for="" className="input-label"
-                ><strong>Confirm Password</strong></label
-              >
-              <input
-                type="password"
-                className="input-feild"
-                value={signUpForm.password}
-                placeholder="Enter your new password"
                 required
               />
             </div>

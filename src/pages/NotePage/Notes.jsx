@@ -79,6 +79,9 @@ const filterNotes=()=>{
 }
 const filteredNotes= filterNotes();
 
+const unPinnedNotes= filteredNotes.filter((item)=>!item.isPinned);
+const pinnedNotes = filteredNotes.filter((item)=> item.isPinned);
+
 return (
     <div className="notes-page">
     <NavBar/>
@@ -93,7 +96,7 @@ return (
                        value={note.title}
                        onChange={(e)=>setNote({...note,title:e.target.value})}
                        />
-                       <p><i className="bi bi-pin-fill icon-md pin-icon"></i></p>
+                       
                    </header>}
                    <section>
                        <textarea onClick={expandCard} className="note-text" placeholder="Take a Note"
@@ -118,19 +121,43 @@ return (
                </div>
             </section>
 
-            <section className="note-card-container ">
-              {filteredNotes.map((note)=>{
+            {pinnedNotes.length>0 && (
+             <div className="added-notes flex-col">
+              <h4 className="note-category">Pinned Notes</h4>
+              <section className="note-card-container ">
+               {pinnedNotes.map((note)=>{
+ 
+                   return (
+                       <NoteCard
+                       key={note._id}
+                       note={note}
+                       editHandler={()=>editHandler(note._id)}
+                     
+                       />
+                   )
+               })}
+             </section>
+             </div> 
+            )}
 
-                  return (
-                      <NoteCard
-                      key={note._id}
-                      note={note}
-                      editHandler={()=>editHandler(note._id)}
-                    
-                      />
-                  )
-              })}
-            </section>
+            {unPinnedNotes.length>0 && (
+                <div className="added-notes flex-col">
+                <h4 className="note-category">Others</h4>
+                <section className="note-card-container ">
+                {unPinnedNotes.map((note)=>{
+  
+                    return (
+                        <NoteCard
+                        key={note._id}
+                        note={note}
+                        editHandler={()=>editHandler(note._id)}
+                      
+                        />
+                    )
+                })}
+              </section>
+              </div>
+            )}
         </div>
     </main>
     </div>

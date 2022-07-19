@@ -42,16 +42,6 @@ export const NavBar=()=>{
          <div className="filter-icon" onClick={sortFilterHandler}><i className="fas fa-filter icon-sm"></i></div>
         </div>
         <div className="saved-item-container flex-row">
-        {!token?
-        <div className="saved-item flex-row"
-        onClick={()=>navigate("/login")}>
-        <i class="fas fa-sign-in-alt  nav-icon"></i>
-        </div>:
-        <div className="saved-item flex-row"
-        onClick={logOutHandler}
-        >
-          <i class="fas fa-sign-out-alt  nav-icon"></i>
-          </div>}
           <div className="saved-item flex-row">
             <a href="https://github.com/PeeyushPrashant" target="_blank">
           <i className="fab fa-github  nav-icon"></i>

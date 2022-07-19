@@ -3,11 +3,15 @@ import { NavBar } from "../../components";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth-context";
 import { useTheme } from "../../context/theme-context";
+import { useData } from "../../context/data-context";
+import { useEffect } from "react";
 export const LandingPage=()=>{
   const navigate= useNavigate();
   const {token}= useAuth();
   const {theme}= useTheme();
-    return(
+  const {loader,setLoader}= useData();
+
+   return(
         <>
         <div className="landing-card">
           <NavBar />

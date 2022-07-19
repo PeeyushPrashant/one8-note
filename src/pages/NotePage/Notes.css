@@ -26,10 +26,7 @@
 .note-title:focus {
   outline: none;
 }
-.pin-icon {
-  color: var(--white-light);
-  cursor: pointer;
-}
+
 .note-text {
   width: 98%;
   height: 8rem;
@@ -66,13 +63,19 @@
   color: var(--white-light);
   width: 6rem;
 }
-
+.added-notes {
+  gap: 0.2rem;
+}
 .note-card-container {
   display: flex;
   flex-direction: row;
   padding-top: 3rem;
   gap: 2.5rem;
   flex-wrap: wrap;
+}
+.note-category {
+  color: var(--white);
+  margin: 0;
 }
 
 @media screen and (max-width: 750px) {

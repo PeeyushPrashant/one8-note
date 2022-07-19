@@ -11,7 +11,7 @@ export const NoteCard=({editHandler,note})=>{
     const path= sampleLocation.pathname;
     const {noteState,noteDispatch,archiveState,archiveDispatch,trashState,trashDispatch}=useData();
     const {token}= useAuth();
-    const {title,body,CreatedAt,backGround,_id,tag,actualTime}=note;
+    const {title,body,CreatedAt,backGround,_id,tag,actualTime,isPinned}=note;
     const archived= archiveState.archiveData.some((ele)=>ele._id===_id);
     const trashed= trashState.trashData.some((ele)=>ele._id===_id);
 
@@ -96,9 +96,14 @@ export const NoteCard=({editHandler,note})=>{
     
 
 return (
-    <div className="card note-card" style={{backgroundColor: backGround}}>
-      <header>
+    <div
+    style={{backgroundColor: backGround}}
+    className="card note-card" 
+    >
+      <header className="note-header flex-row">
           <h3 className="note-card-title">{title}</h3>
+          <p onClick={()=>noteDispatch({type:"PINNED",payload:_id})}>{isPinned?<i class="bi bi-pin-fill icon-md pin-icon"></i>:
+          <i class="bi bi-pin icon-md pin-icon"></i>}</p>
       </header>
       <section className="note-body flex-col">
           <p>{body}</p>
