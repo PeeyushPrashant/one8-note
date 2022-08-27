@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../context/auth-context";
 import "./Auth.css"
 import { useNavigate } from "react-router-dom";
@@ -11,11 +11,14 @@ export const Login=()=>{
     const {loginHandler,token} = useAuth();
     const {setLoader}= useData();
     const navigate= useNavigate();
+    
+    useEffect(()=>{
+      if(token){
+        setLoader(true);
+        setTimeout(()=>setLoader(false),1000)
+      }
+    },[token])
 
-    if(token){
-      setLoader(true);
-      setTimeout(()=>setLoader(false),1000)
-    }
 
     return (
         <main className="main">

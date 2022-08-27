@@ -57,16 +57,16 @@ export const restoreNote = async (id, { token }) =>
     }
   );
 
-export const deleteArchive = async (id, { token }) =>
-  await axios.delete(`/api/archives/delete/${id}`, {
+export const deleteArchive = async (noteId, { token }) =>
+  await axios.delete(`/api/archives/delete/${noteId}`, {
     headers: {
       authorization: token,
     },
   });
 
-export const trashNote = async (id, { note, token }) =>
+export const trashNote = async (noteId, { note, token }) =>
   await axios.post(
-    `/api/notes/trash/${id}`,
+    `/api/notes/trash/${noteId}`,
     { note },
     {
       headers: {
@@ -85,3 +85,24 @@ export const trashToNote = async (id, { token }) =>
       },
     }
   );
+
+export const getAllNotes = async (token) =>
+  await axios.get("/api/notes", {
+    headers: {
+      authorization: token,
+    },
+  });
+
+export const getArchiveNotes = async (token) =>
+  await axios.get("/api/archives", {
+    headers: {
+      authorization: token,
+    },
+  });
+
+export const getTrashNotes = async (token) =>
+  await axios.get("/api/trash", {
+    headers: {
+      authorization: token,
+    },
+  });

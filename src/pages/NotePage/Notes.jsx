@@ -35,7 +35,8 @@ const addNoteHandler=async()=>{
         }
        }
        else{
-           const response = await editNote({note,token})
+           let newNote={...note, tags:[note.tag]};
+           const response = await editNote({note:newNote,token:token})
            if(response.status===200 || response.status===201)
         {
             setNote(initialVal);

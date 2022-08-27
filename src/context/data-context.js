@@ -1,5 +1,18 @@
-import { createContext, useContext, useReducer, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
+import { useAuth } from "./auth-context";
 import { useTheme } from "./theme-context";
+import {
+  getAllNotes,
+  getArchiveNotes,
+  getTrashNotes,
+} from "../services/Services";
+
 const DataContext = createContext();
 
 const noteReducer = (state, action) => {
@@ -59,6 +72,7 @@ const trashReducer = (state, action) => {
 
 const DataProvider = ({ children }) => {
   const { theme } = useTheme();
+  const { token } = useAuth();
   const date = new Date();
   const initialVal = {
     _id: "",
@@ -94,6 +108,30 @@ const DataProvider = ({ children }) => {
   const sideBarHandler = () => {
     setSideBar((curr) => !curr);
   };
+
+  useEffect(() => {
+    (async () => {
+      if (token) {
+        const allNotes = await getAllNotes(token);
+        const allTrashNotes = await getTrashNotes(token);
+        const allArchiveNotes = await getArchiveNotes(token);
+
+        noteDispatch({ type: "ADD_NOTE", payload: allNotes.data.notes });
+        trashDispatch({
+          type: "ADD_TO_TRASH",
+          payload: allTrashNotes.data.trash,
+        });
+        archiveDispatch({
+          type: "ADD_TO_ARCHIVE",
+          payload: allArchiveNotes.data.archives,
+        });
+      } else {
+        noteDispatch({ type: "ADD_NOTE", payload: [] });
+        trashDispatch({ type: "ADD_TO_TRASH", payload: [] });
+        archiveDispatch({ type: "ADD_TO_ARCHIVE", payload: [] });
+      }
+    })();
+  }, [token]);
 
   return (
     <DataContext.Provider

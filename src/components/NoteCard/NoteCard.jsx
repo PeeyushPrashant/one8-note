@@ -11,10 +11,10 @@ export const NoteCard=({editHandler,note})=>{
     const path= sampleLocation.pathname;
     const {noteState,noteDispatch,archiveState,archiveDispatch,trashState,trashDispatch}=useData();
     const {token}= useAuth();
-    const {title,body,CreatedAt,backGround,_id,tag,actualTime,isPinned}=note;
-    const archived= archiveState.archiveData.some((ele)=>ele._id===_id);
-    const trashed= trashState.trashData.some((ele)=>ele._id===_id);
-
+    const {title,body,CreatedAt,backGround,_id,tag,actualTime,isPinned}=note || {};
+    const archived= archiveState.archiveData?.some((ele)=>ele._id===_id);
+    const trashed= trashState.trashData?.some((ele)=>ele._id===_id);
+    
     const removeFromTrash=async (id)=>{
         try{
             const response= await deleteTrash(id,{token});
@@ -57,10 +57,10 @@ export const NoteCard=({editHandler,note})=>{
         }
      }
 
-     const noteToTrashHandler=async (id)=>{
+     const noteToTrashHandler=async (noteId)=>{
          try{
              if(!archived){
-                const response= await trashNote(id,{note,token});
+                const response= await trashNote(noteId,{note,token});
                 if(response.status===200 || response.status===201)
                 {
                    noteDispatch({type:"ADD_NOTE",payload:response.data.notes});
@@ -68,7 +68,7 @@ export const NoteCard=({editHandler,note})=>{
                 }
              }
              else{
-                const response= await deleteArchive(id,{token});
+                const response= await deleteArchive(noteId,{token});
                 if(response.status===200 || response.status===201)
                   {
                   archiveDispatch({type:"ADD_TO_ARCHIVE",payload:response.data.archives})

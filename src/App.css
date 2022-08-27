@@ -12,13 +12,17 @@
   --primary-light: #0b77e4;
   --nav-box-shadow: #eee;
   --sidebar-active: #262f44;
+  --backdrop: rgba(10, 25, 41, 0.9);
+  --aside-background: #122133;
 }
 
 [data-theme="light"] {
   --background-color: white;
-  --nav-box-shadow: rgb(48, 39, 39);
+  --nav-box-shadow: rgb(58, 50, 50);
   --white-light: rgb(48, 44, 44);
   --white: black;
+  --backdrop: rgba(255, 255, 255, 0.8);
+  --aside-background: rgb(250, 249, 249);
 }
 .notes-page {
   background-color: var(--background-color);
@@ -33,11 +37,19 @@
   width: 100%;
   height: 100%;
   gap: 3rem;
-  padding: 2rem 2rem 3rem 10rem;
+  padding: 2rem 2rem 3rem 0;
+  margin-left: 33rem;
+}
+
+@media screen and (max-width: 750px) {
+  .sub-container {
+    margin-left: 5rem;
+  }
 }
 
 @media screen and (max-width: 550px) {
   .sub-container {
-    padding: 2rem 1rem 3rem 1rem;
+    margin-left: 0;
+    padding: 2rem 1rem 3rem 2rem;
   }
 }

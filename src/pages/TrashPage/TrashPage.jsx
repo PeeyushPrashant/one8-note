@@ -11,7 +11,7 @@ export const Trash=()=>{
              <main className="main-cont flex-row">
              <Aside/>
              <div className="sub-container flex-row">
-             {trashArray.map((note)=>{
+             {trashArray?.map((note)=>{
                  return (
                      <NoteCard
                      key={note._id}

@@ -1,7 +1,12 @@
 .sideBar {
-  flex-basis: 27rem;
+  width: 25rem;
+  position: fixed;
+  left: 0;
+  top: 7.2rem;
+  padding-top: 1rem;
   height: 100%;
   gap: 0.5rem;
+  background-color: var(--aside-background);
 }
 .aside-tab {
   cursor: pointer;
@@ -19,15 +24,28 @@
 .aside-subhead {
   font-size: 1.6rem;
 }
+.showSide {
+  width: 25rem;
+  position: fixed;
+  left: 0;
+  height: 100%;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  top: 7.2rem;
+  background-color: var(--aside-background);
+}
 
 @media screen and (max-width: 750px) {
   .showSide {
-    position: absolute;
-    z-index: 10;
-    background-color: var(--background-color);
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+    z-index: 5;
+  }
+  .show-backdrop {
+    position: fixed;
+    top: 7.2rem;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--backdrop);
+    z-index: 4;
   }
   .sideBar {
     display: none;

@@ -60,7 +60,7 @@ export const NavBar=()=>{
           <div className="saved-item flex-row"
           onClick={sideBarHandler}
           >
-          <i class="fas fa-bars nav-icon hamburger"></i>
+          <i className="fas fa-bars nav-icon hamburger"></i>
           </div>
         </div>
       </nav>

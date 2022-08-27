@@ -22,7 +22,6 @@ const AuthProvider = ({ children }) => {
           "prashant123"
         );
       } else var response = await loginServices(email, password);
-      console.log(response);
       if (response.status === 201 || response.status === 200) {
         localStorage.setItem(
           "auth",
@@ -40,11 +39,10 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const signUpHandler = async (e, { name, email, password }) => {
+  const signUpHandler = async ({ name, email, password }, setSignUpForm) => {
     try {
       if (name && email && password !== "")
         var response = await signUpServices(name, email, password);
-      console.log(response);
       if (response.status === 201) {
         localStorage.setItem(
           "auth",

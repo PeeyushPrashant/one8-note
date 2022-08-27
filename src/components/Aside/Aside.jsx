@@ -10,6 +10,7 @@ export const Aside=()=>{
         backgroundColor: isActive? "#0b77e4": ""
     })
   return(
+      <div className={sideBar? "show-backdrop": "hide-backdrop"}>
       <aside className={sideBar? "showSide flex-col": "sideBar flex-col"}>
           <NavLink to="/notes"
           style={getActiveStyle}
@@ -44,7 +45,9 @@ export const Aside=()=>{
         <NavLink to="/trash"
         style={getActiveStyle}
         >
-        <div className="aside-tab flex-row">
+        <div className="aside-tab flex-row"
+        onClick={sideBarHandler}
+        >
         <i className="far fa-trash-alt icon-md"></i>
             <p className="aside-subhead">Trash</p>
         </div>
@@ -52,12 +55,14 @@ export const Aside=()=>{
         <NavLink to="/profile"
         style={getActiveStyle}
         >
-        <div className="aside-tab flex-row">
+        <div className="aside-tab flex-row"
+        onClick={sideBarHandler}
+        >
         <i className="bi bi-person-circle icon-md"></i>
          <p className="aside-subhead">Profile</p>
         </div>
         </NavLink>
       </aside>
-      
+    </div> 
   );
 }
