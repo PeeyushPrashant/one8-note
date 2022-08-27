@@ -31,6 +31,9 @@
 - Filter By Label & Sort by Time
 - Choose color while adding note
 - Add Label to notes
+- Loader
+- Pinned & Unpinned Notes
+- User Profile page
 - Authentication
     - Sign-up
     - Login
