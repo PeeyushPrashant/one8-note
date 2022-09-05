@@ -102,8 +102,8 @@ return (
     >
       <header className="note-header flex-row">
           <h3 className="note-card-title">{title}</h3>
-          <p onClick={()=>noteDispatch({type:"PINNED",payload:_id})}>{isPinned?<i class="bi bi-pin-fill icon-md pin-icon"></i>:
-          <i class="bi bi-pin icon-md pin-icon"></i>}</p>
+          {(path === "/notes") && <p onClick={()=>noteDispatch({type:"PINNED",payload:_id})}>{isPinned?<i class="bi bi-pin-fill icon-md pin-icon"></i>:
+          <i class="bi bi-pin icon-md pin-icon"></i>}</p>}
       </header>
       <section className="note-body flex-col">
           <p>{body}</p>

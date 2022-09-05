@@ -1,6 +1,6 @@
 import  "./NavBar.css";
 import { useAuth } from "../../context/auth-context";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import { useData } from "../../context/data-context";
 import { Filter } from "../Filter/Filter";
 import { useState } from "react";
@@ -10,14 +10,16 @@ export const NavBar=()=>{
   const [sortFilter, setSortFilter]= useState(false);
   const {token,logOutHandler}= useAuth();
   const navigate= useNavigate();
+  const sampleLocation = useLocation();
+  const path= sampleLocation.pathname;
   const {filterDispatch,sideBarHandler}= useData();
   const {theme,changeTheme}= useTheme();
   const sortFilterHandler=()=>{
     setSortFilter((curr)=>!curr);
   
   }
-    return(
-      <>
+   return(
+    <>
         <nav className="navbar flex-row">
           
           <div className="nav-heading flex-row"
@@ -30,6 +32,7 @@ export const NavBar=()=>{
             />
             <small className="nav-heading-small">Note</small>
           </div>
+          {path === "/notes" && 
           <div className="nav-search flex-row">
           <i className="fas fa-search search-icon"></i>
           <input type="text" className="nav-input" placeholder="Type to search"
@@ -41,6 +44,8 @@ export const NavBar=()=>{
           />
          <div className="filter-icon" onClick={sortFilterHandler}><i className="fas fa-filter icon-sm"></i></div>
         </div>
+          }
+          
         <div className="saved-item-container flex-row">
           <div className="saved-item flex-row">
             <a href="https://github.com/PeeyushPrashant" target="_blank">
@@ -64,20 +69,25 @@ export const NavBar=()=>{
           </div>
         </div>
       </nav>
+      {path==="/notes" && 
       <section className="mobile-search-cont">
-       <div className="mobile-nav-search ">
-          <i className="fas fa-search search-icon"></i>
-          <input type="text" className="nav-input" placeholder="Type to search"
-          onKeyDown={(e)=>{
-            if(e.key === 'Enter' || e.target.value === ''){
-              filterDispatch({type:"FILTER", payload:["search",e.target.value]})
-            }
-          }}
-          />
-           <div className="filter-icon" onClick={sortFilterHandler}><i className="fas fa-filter icon-sm"></i></div>
-        </div>
-        </section>
+      <div className="mobile-nav-search ">
+         <i className="fas fa-search search-icon"></i>
+         <input type="text" className="nav-input" placeholder="Type to search"
+         onKeyDown={(e)=>{
+           if(e.key === 'Enter' || e.target.value === ''){
+             filterDispatch({type:"FILTER", payload:["search",e.target.value]})
+           }
+         }}
+         />
+          <div className="filter-icon" onClick={sortFilterHandler}><i className="fas fa-filter icon-sm"></i></div>
+       </div>
+       </section>
+      }
+      
         {sortFilter && <Filter closeFilter={sortFilterHandler}/>}
       </>
+        
     );
+      
 }
